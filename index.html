@@ -1,17 +1,17 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1">
-    <title>Invoteco</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="Stylesheet" type="text/css" href="TabsStyles.css"/>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-    <link rel="stylesheet" href="Acc.css"/>
-    <link rel="stylesheet" href="Icrsl.css"/>
+    <title>Invoteco</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="Stylesheet" type="text/css" href="TabsStyles.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="Acc.css" />
+    <link rel="stylesheet" href="Icrsl.css" />
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
-    <script type="text/javascript" src="jssor.slider.min.js"></script> 
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="jssor.slider.min.js"></script>
 
     <script type="text/javascript">
         $(function () {
@@ -21,107 +21,85 @@
         });
     </script>
     <script type="text/javascript">
-        $(function () {
-            $(".column").sortable({
-                connectWith: ".column",
-                handle: ".portlet-header",
-                cancel: ".portlet-toggle",
-                placeholder: "portlet-placeholder ui-corner-all"
-            });
+        jQuery(document).ready(function ($) {
+            var jssor_1_options = {
+                $AutoPlay: 0,//1
+                $AutoPlaySteps: 4,//4
+                $SlideDuration: 160,
+                $SlideWidth: 240,//200
+                $SlideSpacing: 3,
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$,
+                    $Steps: 1//5
+                },
+                $BulletNavigatorOptions: {
+                    $Class: $JssorBulletNavigator$
+                }
+            };
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+            var jssor_2_slider = new $JssorSlider$("jssor_2", jssor_1_options);
+            var jssor_3_slider = new $JssorSlider$("jssor_3", jssor_1_options);
+            var jssor_4_slider = new $JssorSlider$("jssor_4", jssor_1_options);
+            var jssor_5_slider = new $JssorSlider$("jssor_5", jssor_1_options);
+            var jssor_6_slider = new $JssorSlider$("jssor_6", jssor_1_options);
+            /*#region responsive code begin*/
+            var MAX_WIDTH = 980;
 
-            $(".portlet")
-                .addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
-                .find(".portlet-header")
-                    .addClass("ui-widget-header ui-corner-all")
-                    .prepend("<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
+            function ScaleSlider() {
+                var containerElement = jssor_1_slider.$Elmt.parentNode;
+                var containerElement_2 = jssor_2_slider.$Elmt.parentNode;//
+                var containerElement_3 = jssor_3_slider.$Elmt.parentNode;//
+                var containerElement_4 = jssor_4_slider.$Elmt.parentNode;//
+                var containerElement_5 = jssor_5_slider.$Elmt.parentNode;//
+                var containerElement_6 = jssor_6_slider.$Elmt.parentNode;//
 
-            $(".portlet-toggle").on("click", function () {
-                var icon = $(this);
-                icon.toggleClass("ui-icon-minusthick ui-icon-plusthick");
-                icon.closest(".portlet").find(".portlet-content").toggle();
-            });
+                var containerWidth = containerElement.clientWidth;
+                var containerWidth_2 = containerElement_2.clientWidth;
+                var containerWidth_3 = containerElement_3.clientWidth;
+                var containerWidth_4 = containerElement_4.clientWidth;
+                var containerWidth_5 = containerElement_5.clientWidth;
+                var containerWidth_6 = containerElement_6.clientWidth;
+
+                if (containerWidth) {
+
+                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+
+                    jssor_1_slider.$ScaleWidth(expectedWidth);
+                }
+
+                if (containerWidth_2) {
+                    var expectedWidth_2 = Math.min(MAX_WIDTH || containerWidth_2, containerWidth_2);
+                    jssor_2_slider.$ScaleWidth(expectedWidth_2);
+                }
+
+                if (containerWidth_3) {
+                    var expectedWidth_3 = Math.min(MAX_WIDTH || containerWidth_3, containerWidth_3);
+                    jssor_3_slider.$ScaleWidth(expectedWidth_3);
+                }
+                if (containerWidth_4) {
+                    var expectedWidth_4 = Math.min(MAX_WIDTH || containerWidth_4, containerWidth_4);
+                    jssor_4_slider.$ScaleWidth(expectedWidth_4);
+                }
+
+                if (containerWidth_5) {
+                    var expectedWidth_5 = Math.min(MAX_WIDTH || containerWidth_5, containerWidth_5);
+                    jssor_5_slider.$ScaleWidth(expectedWidth_5);
+                }
+                if (containerWidth_6) {
+                    var expectedWidth_6 = Math.min(MAX_WIDTH || containerWidth_6, containerWidth_6);
+                    jssor_6_slider.$ScaleWidth(expectedWidth_6);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+
+            ScaleSlider();
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+            /*#endregion responsive code end*/
         });
-    </script>
-    <script type="text/javascript">
-           jQuery(document).ready(function ($) {
-               var jssor_1_options = {
-                   $AutoPlay: 0,//1
-                   $AutoPlaySteps: 4,//4
-                   $SlideDuration: 160,
-                   $SlideWidth: 240,//200
-                   $SlideSpacing: 3,
-                   $ArrowNavigatorOptions: {
-                       $Class: $JssorArrowNavigator$,
-                       $Steps: 1//5
-                   },
-                   $BulletNavigatorOptions: {
-                       $Class: $JssorBulletNavigator$
-                   }
-               };
-               var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-               var jssor_2_slider = new $JssorSlider$("jssor_2", jssor_1_options);
-               var jssor_3_slider = new $JssorSlider$("jssor_3", jssor_1_options);
-               var jssor_4_slider = new $JssorSlider$("jssor_4", jssor_1_options);
-               var jssor_5_slider = new $JssorSlider$("jssor_5", jssor_1_options);
-               var jssor_6_slider = new $JssorSlider$("jssor_6", jssor_1_options);
-               /*#region responsive code begin*/
-               var MAX_WIDTH = 980;
-
-               function ScaleSlider() {
-                   var containerElement = jssor_1_slider.$Elmt.parentNode;
-                   var containerElement_2 = jssor_2_slider.$Elmt.parentNode;//
-                   var containerElement_3 = jssor_3_slider.$Elmt.parentNode;//
-                   var containerElement_4 = jssor_4_slider.$Elmt.parentNode;//
-                   var containerElement_5 = jssor_5_slider.$Elmt.parentNode;//
-                   var containerElement_6 = jssor_6_slider.$Elmt.parentNode;//
-
-                   var containerWidth = containerElement.clientWidth;
-                   var containerWidth_2 = containerElement_2.clientWidth;
-                   var containerWidth_3 = containerElement_3.clientWidth;
-                   var containerWidth_4 = containerElement_4.clientWidth;
-                   var containerWidth_5 = containerElement_5.clientWidth;
-                   var containerWidth_6 = containerElement_6.clientWidth;
-
-                   if (containerWidth) {
-
-                       var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-
-                       jssor_1_slider.$ScaleWidth(expectedWidth);
-                   }
-
-                   if (containerWidth_2) {
-                       var expectedWidth_2 = Math.min(MAX_WIDTH || containerWidth_2, containerWidth_2);
-                       jssor_2_slider.$ScaleWidth(expectedWidth_2);
-                   }
-
-                   if (containerWidth_3) {
-                       var expectedWidth_3 = Math.min(MAX_WIDTH || containerWidth_3, containerWidth_3);
-                       jssor_3_slider.$ScaleWidth(expectedWidth_3);
-                   }
-                   if (containerWidth_4) {
-                       var expectedWidth_4 = Math.min(MAX_WIDTH || containerWidth_4, containerWidth_4);
-                       jssor_4_slider.$ScaleWidth(expectedWidth_4);
-                   }
-
-                   if (containerWidth_5) {
-                       var expectedWidth_5 = Math.min(MAX_WIDTH || containerWidth_5, containerWidth_5);
-                       jssor_5_slider.$ScaleWidth(expectedWidth_5);
-                   }
-                   if (containerWidth_6) {
-                       var expectedWidth_6 = Math.min(MAX_WIDTH || containerWidth_6, containerWidth_6);
-                       jssor_6_slider.$ScaleWidth(expectedWidth_6);
-                   }
-                   else {
-                       window.setTimeout(ScaleSlider, 30);
-                   }
-               }
-
-               ScaleSlider();
-               $(window).bind("load", ScaleSlider);
-               $(window).bind("resize", ScaleSlider);
-               $(window).bind("orientationchange", ScaleSlider);
-               /*#endregion responsive code end*/
-           });
     </script>
     <style>
         a.rollover_fb {
@@ -130,29 +108,34 @@
             width: 39px; /* Ширина рисунка */
             height: 39px; /*  Высота рисунка */
         }
+
             a.rollover_fb:hover {
                 background: url(btn_fb_39x39_n.png); /* заменяемый рисунок при наведении мыши  */
             }
+
         a.rollover_tw {
             background: url(btn_tw_39x39_grey_n.png); /* рисунок, который увидим сразу  */
             display: block; /*  Рисунок как блочный элемент */
             width: 39px; /* Ширина рисунка */
             height: 39px; /*  Высота рисунка */
         }
+
             a.rollover_tw:hover {
                 background: url(btn_tw_39x39_n.png); /* заменяемый рисунок при наведении мыши  */
             }
+
         a.rollover_in {
             background: url(btn_in_39x39_grey_n.png); /* рисунок, который увидим сразу  */
             display: block; /*  Рисунок как блочный элемент */
             width: 39px; /* Ширина рисунка */
             height: 39px; /*  Высота рисунка */
         }
+
             a.rollover_in:hover {
                 background: url(btn_in_39x39_n.png); /* заменяемый рисунок при наведении мыши  */
             }
     </style>
- 
+
 </head>
 
 <!-- Нужно столько вызовов, сколькsо tabbar-ов на странице (для каждого свои параметры)-->
@@ -165,49 +148,49 @@
                 <!-- ================================================================================================ -->
                 <div id="tabBar1_leftIndent" class="LeftIndent1"></div>
                 <div id="tabBar1_tab0" class="ITab1"
-                     onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
+                    onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
                          setCookie('MyCookieForTabBar1', this.id)">
                     <p id="text1_tab0">Профиль</p>
                 </div>
                 <!-- ================================================================================================ -->
                 <div id="tabBar1_d0_1" class="TabDelimiter"></div>
                 <div id="tabBar1_tab1" class="ITab1"
-                     onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
+                    onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
                              setCookie('MyCookieForTabBar1', this.id)">
                     <p id="text1_tab1">Резюме</p>
                 </div>
                 <!-- ================================================================================================ -->
                 <div id="tabBar1_d1_2" class="TabDelimiter"></div>
                 <div id="tabBar1_tab2" class="ITab1"
-                     onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
+                    onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
                           setCookie('MyCookieForTabBar1', this.id)">
                     <p id="text1_tab2">Портфолио</p>
                 </div>
                 <!-- ================================================================================================ -->
                 <div id="tabBar1_d2_3" class="TabDelimiter"></div>
                 <div id="tabBar1_tab3" class="ITab1"
-                     onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
+                    onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
                           setCookie('MyCookieForTabBar1', this.id)">
                     <p id="text1_tab3">Блог</p>
                 </div>
                 <!-- ================================================================================================ -->
                 <div id="tabBar1_d1_4" class="TabDelimiter"></div>
                 <div id="tabBar1_tab4" class="ITab1"
-                     onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
+                    onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
                                  setCookie('MyCookieForTabBar1', this.id)">
                     <p id="P1">Статьи</p>
                 </div>
                 <!-- ================================================================================================ -->
                 <div id="tabBar1_d1_5" class="TabDelimiter"></div>
                 <div id="tabBar1_tab5" class="ITab1"
-                     onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
+                    onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
                                  setCookie('MyCookieForTabBar1', this.id)">
                     <p id="P3">Форум</p>
                 </div>
                 <!-- ================================================================================================ -->
                 <div id="tabBar1_d1_6" class="TabDelimiter"></div>
                 <div id="tabBar1_tab6" class="ITab1"
-                     onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
+                    onclick="changeState('1', 7, this.id, 'tabBar1_tab', 'tabBar1_contDiv'),
                                  setCookie('MyCookieForTabBar1', this.id)">
                     <p id="P4">Контакты</p>
                 </div>
@@ -219,7 +202,7 @@
                 <div id="tabBar1_contDiv0" class="AContent">
                     <div id="FotoNameWelcomediv" class="FotoNameWelcomediv">
                         <div id="fotodiv" class="fotodiv">
-                            <img alt="img1" src="Images/Foto.jpg" />
+                            <img alt="img1" src="Foto.jpg" />
                         </div>
                         <div id="NameWelcomeDiv">
                             <div id="namediv" class="namediv">
@@ -410,18 +393,18 @@
                     </div>
                 </div>
                 <div id="tabBar1_contDiv2" class="IContent1">
-                    <div id="portfolioDiv" class="PortDiv">       
+                    <div id="portfolioDiv" class="PortDiv">
                         <div class="type_headerdiv">
                             <h3>Изделия, производимые методом ротоформовки</h3>
                         </div>
                         <div id="jssor_1" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin loading">
-                                <img  class="imgloading" src="spin.svg" />
+                                <img class="imgloading" src="spin.svg" />
                             </div>
                             <div data-u="slides" class="imgrow">
                                 <div>
-                                    <img data-u="image" src="Images/roto/end_section.jpg"/>
+                                    <img data-u="image" src="Images/roto/end_section.jpg" />
                                     <div class="imgdata">
                                         <p class="downloadButtonText">Секция концевая</p>
                                     </div>
@@ -520,7 +503,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <img data-u="image" src="Images/roto/Cone.jpg"/>
+                                    <img data-u="image" src="Images/roto/Cone.jpg" />
                                     <div class="imgdata">
                                         <p class="downloadButtonText">Конус</p>
                                     </div>
@@ -532,7 +515,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <img data-u="image" src="Images/roto/Shaft_1000.jpg"/>
+                                    <img data-u="image" src="Images/roto/Shaft_1000.jpg" />
                                     <div class="imgdata">
                                         <p class="downloadButtonText">Шахта</p>
                                     </div>
@@ -554,7 +537,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <img data-u="image" src="Images/roto/K_well.jpg"/>
+                                    <img data-u="image" src="Images/roto/K_well.jpg" />
                                     <div class="imgdata">
                                         <p class="downloadButtonText">Колодец канализационный</p>
                                     </div>
@@ -565,7 +548,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <img data-u="image" src="Images/roto/C_well.jpg"/>
+                                    <img data-u="image" src="Images/roto/C_well.jpg" />
                                     <div class="imgdata">
                                         <p class="downloadButtonText">Колодец кабельный</p>
                                     </div>
@@ -576,7 +559,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <img data-u="image" src="Images/roto/P_well.jpg"/>
+                                    <img data-u="image" src="Images/roto/P_well.jpg" />
                                     <div class="imgdata">
                                         <p class="downloadButtonText">Колодец универсальный</p>
                                     </div>
@@ -586,8 +569,8 @@
                                         </a>
                                     </div>
                                 </div>
-                                    <div>
-                                    <img data-u="image" src="Images/roto/S_well.jpg"/>
+                                <div>
+                                    <img data-u="image" src="Images/roto/S_well.jpg" />
                                     <div class="imgdata">
                                         <p class="downloadButtonText">Колодец дождеприемный</p>
                                     </div>
@@ -618,15 +601,15 @@
                                 </svg>
                             </div>
                         </div>
-                             <div class="type_headerdiv">
+                        <div class="type_headerdiv">
                             <h3>Судостроение</h3>
                         </div>
                         <div id="jssor_2" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin loading">
-                                <img  class="imgloading" src="spin.svg" />
+                                <img class="imgloading" src="spin.svg" />
                             </div>
-                             <div data-u="slides" class="imgrow">
+                            <div data-u="slides" class="imgrow">
                                 <div>
                                     <img data-u="image" src="img/gallery/240x320/001.jpg" />
                                     <div class="imgdata">
@@ -814,15 +797,15 @@
                                 </svg>
                             </div>
                         </div>
-                           <div class="type_headerdiv">
+                        <div class="type_headerdiv">
                             <h3>Изделия, производимые методом литья под давлением</h3>
                         </div>
                         <div id="jssor_3" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin loading">
-                                <img  class="imgloading" src="spin.svg" />
+                                <img class="imgloading" src="spin.svg" />
                             </div>
-                             <div data-u="slides" class="imgrow">
+                            <div data-u="slides" class="imgrow">
                                 <div>
                                     <img data-u="image" src="img/gallery/240x320/001.jpg" />
                                     <div class="imgdata">
@@ -1010,15 +993,15 @@
                                 </svg>
                             </div>
                         </div>
-                          <div class="type_headerdiv">
+                        <div class="type_headerdiv">
                             <h3>Изделия, производимые методом экструзии</h3>
                         </div>
                         <div id="jssor_4" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin loading">
-                                <img  class="imgloading" src="spin.svg" />
+                                <img class="imgloading" src="spin.svg" />
                             </div>
-                             <div data-u="slides" class="imgrow">
+                            <div data-u="slides" class="imgrow">
                                 <div>
                                     <img data-u="image" src="img/gallery/240x320/001.jpg" />
                                     <div class="imgdata">
@@ -1206,15 +1189,15 @@
                                 </svg>
                             </div>
                         </div>
-                          <div class="type_headerdiv">
+                        <div class="type_headerdiv">
                             <h3>Изделия, производимые методом мех.обработки</h3>
                         </div>
                         <div id="jssor_5" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin ui-tabs-loading">
-                                <img  class="imgloading" src="spin.svg" />
+                                <img class="imgloading" src="spin.svg" />
                             </div>
-                             <div data-u="slides" class="imgrow">
+                            <div data-u="slides" class="imgrow">
                                 <div>
                                     <img data-u="image" src="img/gallery/240x320/001.jpg" />
                                     <div class="imgdata">
@@ -1391,7 +1374,7 @@
                                 </div>
                             </div>
                             <!-- Arrow Navigator -->
-                            <div data-u="arrowleft" class="jssora073 arrowleft"  data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+                            <div data-u="arrowleft" class="jssora073 arrowleft" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
                                 <svg viewBox="0 0 16000 16000" class="svg_viewBox">
                                     <path class="a" d="M4037.7,8357.3l5891.8,5891.8c100.6,100.6,219.7,150.9,357.3,150.9s256.7-50.3,357.3-150.9 l1318.1-1318.1c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3L7745.9,8000l4216.4-4216.4 c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3l-1318.1-1318.1c-100.6-100.6-219.7-150.9-357.3-150.9 s-256.7,50.3-357.3,150.9L4037.7,7642.7c-100.6,100.6-150.9,219.7-150.9,357.3C3886.8,8137.6,3937.1,8256.7,4037.7,8357.3 L4037.7,8357.3z"></path>
                                 </svg>
@@ -1402,15 +1385,15 @@
                                 </svg>
                             </div>
                         </div>
-                          <div class="type_headerdiv">
+                        <div class="type_headerdiv">
                             <h3>Изделия, производимые методом линейной формовки</h3>
                         </div>
                         <div id="jssor_6" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin loading">
-                                <img  class="imgloading" src="spin.svg" />
+                                <img class="imgloading" src="spin.svg" />
                             </div>
-                             <div data-u="slides" class="imgrow">
+                            <div data-u="slides" class="imgrow">
                                 <div>
                                     <img data-u="image" src="img/gallery/240x320/001.jpg" />
                                     <div class="imgdata">
@@ -1608,35 +1591,35 @@
                 </div>
                 <div id="tabBar1_contDiv3" class="IContent1">
                     <!--Блог-->
-                     <p>
-                         <a href="iblog.html" target="_blank">Перейти к блогу</a>
-                     </p>
+                    <p>
+                        <a href="iblog.html" target="_blank">Перейти к блогу</a>
+                    </p>
                 </div>
                 <div id="tabBar1_contDiv4" class="IContent1">
 
 
-                   <!-- Статьи-->
-                     <p class="ThesisText">Статьи:</p>
-                                <ul>
-                                    <li><a href="st1.html" target="_blank">Перейти к статье 1</a></li>
-                                    <li><a href="st2.html" target="_blank">Перейти к статье 2</a> </li>
-                                    <li><a href="st3.html" target="_blank">Перейти к статье 3</a></li>
-                                    <li><a href="st4.html" target="_blank">Перейти к статье 4</a></li>
-                                </ul>
+                    <!-- Статьи-->
+                    <p class="ThesisText">Статьи:</p>
+                    <ul>
+                        <li><a href="st1.html" target="_blank">Перейти к статье 1</a></li>
+                        <li><a href="st2.html" target="_blank">Перейти к статье 2</a> </li>
+                        <li><a href="st3.html" target="_blank">Перейти к статье 3</a></li>
+                        <li><a href="st4.html" target="_blank">Перейти к статье 4</a></li>
+                    </ul>
                 </div>
                 <div id="tabBar1_contDiv5" class="IContent1">
                     <!--Форум-->
                     <p>
-                         <a href="http://forum.invoteco.ru/" target="_blank">Перейти к форуму</a>
-                    </p>             
+                        <a href="http://forum.invoteco.ru/" target="_blank">Перейти к форуму</a>
+                    </p>
                 </div>
                 <div id="tabBar1_contDiv6" class="IContent1">
 
                     <!--Контакты-->
                     <p>E-mail:<a href="mailto:pas@invoteco.ru">pas@invoteco.ru</a></p>
-                          <p>
-                         тел.8**********
-                     </p>
+                    <p>
+                        тел.8**********
+                    </p>
                 </div>
             </div>
         </div>

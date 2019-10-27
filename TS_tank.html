@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Емкость наборная </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Tank.">
+    <meta name="Keywords" content="Tank, rotoforming">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="Stylesheet" type="text/css" href="CSS/TabsStyles.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--Vertical jq tabbar-->
+    <script type="text/javascript">
+        $(function () {
+            $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
+            $("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
+        });
+    </script>
+    <!--Vertical jq tabbar-->
+    <style>
+        .ui-tabs-vertical {
+            width: 55em;
+        }
+            /*55em*/
+            .ui-tabs-vertical .ui-tabs-nav {
+                padding: .2em .1em .2em .2em;
+                float: left;
+                width: auto;
+            }
+
+                .ui-tabs-vertical .ui-tabs-nav li {
+                    clear: left;
+                    width: 100%;
+                    border-bottom-width: 1px !important;
+                    border-right-width: 0 !important;
+                    margin: 0 -1px .2em 0;
+                }
+
+                    .ui-tabs-vertical .ui-tabs-nav li a {
+                        display: block;
+                    }
+
+                    .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+                        padding-bottom: 0;
+                        padding-right: .1em;
+                        border-right-width: 1px;
+                    }
+
+            .ui-tabs-vertical .ui-tabs-panel {
+                padding: 1em;
+                float: right;
+                width: 45em;
+            }
+    </style>
+    <style>
+        table {
+            border-collapse: collapse; /*убираем пустые промежутки между ячейками*/
+            border: 1px solid grey; /*устанавливаем для таблицы внешнюю границу серого цвета толщиной 1px*/
+            width: 700px;
+        }
+
+        th {
+            border: 1px solid grey;
+        }
+        /*Границы ячеек заголовка каждого столбца задаются для элемента*/
+        td {
+            border: 1px solid grey;
+        }
+        /*Границы ячеек тела таблицы задаются для элемента*/
+        .tdh {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body style="font-family: Arial,Helvetica,Geneva,Sans-serif;" onload="javascript:cmiWindowStart()">
+
+    <h2>Емкость наборная</h2>
+    <div style="width: 100%; padding: 10px;">
+        <div id="tabs" style="width: 100%;">
+            <ul>
+                <li><a href="#tabs-1">Вариант 1</a></li>
+                <li><a href="#tabs-2">Вариант 2</a></li>
+                <li><a href="#tabs-3">Вариант 3</a></li>
+                <li><a href="#tabs-4">Вариант 4</a></li>
+                <li><a href="#tabs-5">Вариант 5</a></li>
+                <li><a href="#tabs-6">Вариант 6</a></li>
+                <li><a href="#tabs-7">Вариант 7</a></li>
+                <li><a href="#tabs-8">Вариант 8</a></li>
+                <li><a href="#tabs-9">Вариант 9</a></li>
+                <li><a href="#tabs-10">Вариант 10</a></li>
+                <li><a href="#tabs-11">Вариант 11</a></li>
+                <li><a href="#tabs-12">Вариант 12</a></li>
+                <li><a href="#tabs-13">Вариант 13</a></li>
+                <li><a href="#tabs-14">Вариант 14</a></li>
+                <li><a href="#tabs-15">Вариант 15</a></li>
+                <li><a href="#tabs-16">Вариант 16</a></li>
+                <li><a href="#tabs-17">Вариант 17</a></li>
+                <li><a href="#tabs-18">Вариант 18</a></li>
+                <li><a href="#tabs-19">Вариант 19</a></li>
+                <li><a href="#tabs-20">Вариант 20</a></li>
+                <li><a href="#tabs-21">Вариант 21</a></li>
+                <li><a href="#tabs-22">Вариант 22</a></li>
+                <li><a href="#tabs-23">Вариант 23</a></li>
+                <li><a href="#tabs-24">Вариант 24</a></li>
+                <li><a href="#tabs-25">Вариант 25</a></li>
+                <li><a href="#tabs-26">Вариант 26</a></li>
+                <li><a href="#tabs-27">Вариант 27</a></li>
+                <li><a href="#tabs-28">Вариант 28</a></li>
+                <li><a href="#tabs-29">Вариант 29</a></li>
+                <li><a href="#tabs-30">Вариант 30</a></li>
+                <li><a href="#tabs-31">Вариант 31</a></li>
+
+            </ul>
+            <div style="position: relative; top: -19px;">
+                <div id="tabs-1" style="float: left;">
+                    <img src="Images/roto/2(UK_PK_T_PK_T_PK_T_PK_UK).jpg" />
+                </div>
+                <div id="tabs-2" style="float: left;">
+                    <img src="Images/roto/2(UK_PK_T_PK_T_PK_T_PK_UK)_5PK.jpg" />
+                </div>
+                <div id="tabs-3" style="float: left;">
+                    <img src="Images/roto/2UK_2PK_2UK_2PK.jpg" />
+                </div>
+                <div id="tabs-4" style="float: left;">
+                    <img src="Images/roto/2UK_3PK_2UK_3PK.jpg" />
+                </div>
+                <div id="tabs-5" style="float: left;">
+                    <img src="Images/roto/2UK_4PK_2UK_4PK.jpg" />
+                </div>
+                <div id="tabs-6" style="float: left;">
+                    <img src="Images/roto/2UK_5PK_2UK_5PK.jpg" />
+                </div>
+                <div id="tabs-7" style="float: left;">
+                    <img src="Images/roto/2UK_6PK_2UK_6PK.jpg" />
+                </div>
+                <div id="tabs-8" style="float: left;">
+                    <img src="Images/roto/2UK_PK_2UK_PK.jpg" />
+                </div>
+                <div id="tabs-9" style="float: left;">
+                    <img src="Images/roto/2UK_PK_T_PK_2UK_PK_T_PK.jpg" />
+                </div>
+                <div id="tabs-10" style="float: left;">
+                    <img src="Images/roto/4UK.jpg" />
+                </div>
+
+                <div id="tabs-11" style="float: left;">
+                    <img src="Images/roto/KK_2PK_2UK_2PK_2UK_2PK_KK.jpg" />
+                </div>
+                <div id="tabs-12" style="float: left;">
+                    <img src="Images/roto/KK_2PK_2UK_2PK_KK.jpg" />
+                </div>
+                <div id="tabs-13" style="float: left;">
+                    <img src="Images/roto/KK_2PK_KK.jpg" />
+                </div>
+                <div id="tabs-14" style="float: left;">
+                    <img src="Images/roto/KK_2UK_KK.jpg" />
+                </div>
+                <div id="tabs-15" style="float: left;">
+                    <img src="Images/roto/KK_2UK_PK_2UK_KK.jpg" />
+                </div>
+                <div id="tabs-16" style="float: left;">
+                    <img src="Images/roto/KK_3PK_2UK_2PK_2UK_3PK_KK.jpg" />
+                </div>
+                <div id="tabs-17" style="float: left;">
+                    <img src="Images/roto/KK_3PK_2UK_3PK_2UK_3PK_KK.jpg" />
+                </div>
+                <div id="tabs-18" style="float: left;">
+                    <img src="Images/roto/KK_3PK_2UK_3PK_KK.jpg" />
+                </div>
+                <div id="tabs-19" style="float: left;">
+                    <img src="Images/roto/KK_3PK_KK.jpg" />
+                </div>
+                <div id="tabs-20" style="float: left;">
+                    <img src="Images/roto/KK_4PK_KK.jpg" />
+                </div>
+                <div id="tabs-21" style="float: left;">
+                    <img src="Images/roto/KK_4UK_KK.jpg" />
+                </div>
+                <div id="tabs-22" style="float: left;">
+                    <img src="Images/roto/KK_5PK_KK.jpg" />
+                </div>
+                <div id="tabs-23" style="float: left;">
+                    <img src="Images/roto/KK_KK.jpg" />
+                </div>
+                <div id="tabs-24" style="float: left;">
+                    <img src="Images/roto/KK_PK_2UK_PK_2UK_PK_2UK_PK_KK.jpg" />
+                </div>
+                <div id="tabs-25" style="float: left;">
+                    <img src="Images/roto/KK_PK_2UK_PK_2UK_PK_KK.jpg" />
+                </div>
+                <div id="tabs-26" style="float: left;">
+                    <img src="Images/roto/KK_PK_2UK_PK_KK.jpg" />
+                </div>
+                <div id="tabs-27" style="float: left;">
+                    <img src="Images/roto/KK_PK_4UK_PK_KK.jpg" />
+                </div>
+                <div id="tabs-28" style="float: left;">
+                    <img src="Images/roto/KK_PK_KK.jpg" />
+                </div>
+                <div id="tabs-29" style="float: left;">
+                    <img src="Images/roto/UK_PK_T_PK_T_PK_2UK_PK_T_PK_T_PK_UK.jpg" />
+                </div>
+                <div id="tabs-30" style="float: left;">
+                    <img src="Images/roto/UK_PK_T_PK_T_PK_UK_PK_UK_PK_T_PK_T_PK_UK_PK_PK_PK.jpg" />
+                </div>
+                <div id="tabs-31" style="float: left;">
+                    <img src="Images/roto/UK_PK_T_PK_UK_PK_UK_PK_T_PK_UK_PK_PK.jpg" />
+                </div>
+            </div>
+        </div>
+
+        <h3>Назначение:</h3>
+        <ul>
+            <li>Использование в качестве подземной/наземной емкости.
+            </li>
+        </ul>
+        <h3>Характеристики</h3>
+
+        <table>
+            <tr id="tr1">
+                <td class="tdh"><strong>Параметр</strong></td>
+                <td class="tdh"><strong>Значение</strong> </td>
+                <td class="tdh"><strong>Примечание</strong></td>
+            </tr>
+            <tr>
+                <td>&nbsp;Объем номинальный, л.</td>
+                <td>&nbsp;&nbsp;см. чертеж </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Масса, кг</td>
+                <td>&nbsp;&nbsp;см. чертеж </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Материал</td>
+                <td>&nbsp;&nbsp;LLDPE</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;Габаритные размеры, LхBхH, мм</td>
+                <td>&nbsp;&nbsp;см. чертеж </td>
+                <td>&nbsp;</td>
+            </tr>
+
+        </table>
+
+        <!--<p> Зарегистрированные пользователи имеют возможность скачать документацию</p>-->
+        <div style="height: 50px;"></div>
+        <!--     <a href="Files/59.30.30.7z">Скачать файл модели (stp)</a>
+       <p></p>
+         <a href="Files/59.30.30.pdf">Скачать файл чертежей (pdf)</a>-->
+        <a href="https://polimer-group.com/" class="btnref" target="_blank">Купить</a>
+    </div>
+</body>
+</html>

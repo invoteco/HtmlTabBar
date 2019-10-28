@@ -1,6 +1,6 @@
 ﻿//Скрипт служит для функционирования TabBar с сохранением состояния в файле cookie
 var isFading = true; //Определяет, должен-ли контент появляться постепенно.
-var fadeTime = 300; //Время затухания (ms)
+var fadeTime = 300; //Определяет время появления контента (ms)
 
 function IsCookieEnabled() {
     if (typeof (navigator.cookieEnabled) != "undefined") {

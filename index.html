@@ -22,7 +22,9 @@
     </script>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
-            var jssor_1_options = {
+            var slidersCount=6;//my
+
+            var jssor_options = {
                 $AutoPlay: 0,//1
                 $AutoPlaySteps: 4,//4
                 $SlideDuration: 160,
@@ -36,58 +38,64 @@
                     $Class: $JssorBulletNavigator$
                 }
             };
-            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-            var jssor_2_slider = new $JssorSlider$("jssor_2", jssor_1_options);
-            var jssor_3_slider = new $JssorSlider$("jssor_3", jssor_1_options);
-            var jssor_4_slider = new $JssorSlider$("jssor_4", jssor_1_options);
-            var jssor_5_slider = new $JssorSlider$("jssor_5", jssor_1_options);
-            var jssor_6_slider = new $JssorSlider$("jssor_6", jssor_1_options);
+
+            //Create sliders
+            for (i = 0; i <= slidersCount; i ++) {
+                //Здесь в будущем разместим код
+            }
+            //end create sliders
+
+            var jssor_0_slider = new $JssorSlider$("jssor_0", jssor_options);
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_options);
+            var jssor_2_slider = new $JssorSlider$("jssor_2", jssor_options);
+            var jssor_3_slider = new $JssorSlider$("jssor_3", jssor_options);
+            var jssor_4_slider = new $JssorSlider$("jssor_4", jssor_options);
+            var jssor_5_slider = new $JssorSlider$("jssor_5", jssor_options);
+
             /*#region responsive code begin*/
             var MAX_WIDTH = 980;
 
             function ScaleSlider() {
-                var containerElement = jssor_1_slider.$Elmt.parentNode;
+                var containerElement_0 = jssor_0_slider.$Elmt.parentNode;
+                var containerElement_1 = jssor_1_slider.$Elmt.parentNode;//
                 var containerElement_2 = jssor_2_slider.$Elmt.parentNode;//
                 var containerElement_3 = jssor_3_slider.$Elmt.parentNode;//
                 var containerElement_4 = jssor_4_slider.$Elmt.parentNode;//
                 var containerElement_5 = jssor_5_slider.$Elmt.parentNode;//
-                var containerElement_6 = jssor_6_slider.$Elmt.parentNode;//
 
-                var containerWidth = containerElement.clientWidth;
-                var containerWidth_2 = containerElement_2.clientWidth;
-                var containerWidth_3 = containerElement_3.clientWidth;
-                var containerWidth_4 = containerElement_4.clientWidth;
-                var containerWidth_5 = containerElement_5.clientWidth;
-                var containerWidth_6 = containerElement_6.clientWidth;
+                var containerWidth = containerElement_0.clientWidth;
+                var containerWidth_2 = containerElement_1.clientWidth;
+                var containerWidth_3 = containerElement_2.clientWidth;
+                var containerWidth_4 = containerElement_3.clientWidth;
+                var containerWidth_5 = containerElement_4.clientWidth;
+                var containerWidth_6 = containerElement_5.clientWidth;
 
-                if (containerWidth) {
+                if (containerWidth_0) {
+                    var expectedWidth_0 = Math.min(MAX_WIDTH || containerWidth_0, containerWidth_0);
+                    jssor_0_slider.$ScaleWidth(expectedWidth_0);
+                }
 
-                    var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-
-                    jssor_1_slider.$ScaleWidth(expectedWidth);
+                if (containerWidth_1) {
+                    var expectedWidth_1 = Math.min(MAX_WIDTH || containerWidth_1, containerWidth_1);
+                    jssor_1_slider.$ScaleWidth(expectedWidth_1);
                 }
 
                 if (containerWidth_2) {
                     var expectedWidth_2 = Math.min(MAX_WIDTH || containerWidth_2, containerWidth_2);
                     jssor_2_slider.$ScaleWidth(expectedWidth_2);
                 }
-
                 if (containerWidth_3) {
                     var expectedWidth_3 = Math.min(MAX_WIDTH || containerWidth_3, containerWidth_3);
                     jssor_3_slider.$ScaleWidth(expectedWidth_3);
                 }
+
                 if (containerWidth_4) {
                     var expectedWidth_4 = Math.min(MAX_WIDTH || containerWidth_4, containerWidth_4);
                     jssor_4_slider.$ScaleWidth(expectedWidth_4);
                 }
-
                 if (containerWidth_5) {
                     var expectedWidth_5 = Math.min(MAX_WIDTH || containerWidth_5, containerWidth_5);
                     jssor_5_slider.$ScaleWidth(expectedWidth_5);
-                }
-                if (containerWidth_6) {
-                    var expectedWidth_6 = Math.min(MAX_WIDTH || containerWidth_6, containerWidth_6);
-                    jssor_6_slider.$ScaleWidth(expectedWidth_6);
                 }
                 else {
                     window.setTimeout(ScaleSlider, 30);
@@ -135,7 +143,6 @@
                 background: url(btn_in_39x39_n.png); /* заменяемый рисунок при наведении мыши  */
             }
     </style>
-
 </head>
 
 <!-- Нужно столько вызовов, сколькsо tabbar-ов на странице (для каждого свои параметры)-->
@@ -397,7 +404,7 @@
                         <div class="type_headerdiv">
                             <h3>Изделия, производимые методом ротоформовки</h3>
                         </div>
-                        <div id="jssor_1" class="icrsl_320">
+                        <div id="jssor_0" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin loading">
                                 <img class="imgloading" src="spin.svg" />
@@ -604,7 +611,7 @@
                         <div class="type_headerdiv">
                             <h3>Судостроение</h3>
                         </div>
-                        <div id="jssor_2" class="icrsl_320">
+                        <div id="jssor_1" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin loading">
                                 <img class="imgloading" src="spin.svg" />
@@ -800,7 +807,7 @@
                         <div class="type_headerdiv">
                             <h3>Изделия, производимые методом литья под давлением</h3>
                         </div>
-                        <div id="jssor_3" class="icrsl_320">
+                        <div id="jssor_2" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin loading">
                                 <img class="imgloading" src="spin.svg" />
@@ -996,7 +1003,7 @@
                         <div class="type_headerdiv">
                             <h3>Изделия, производимые методом экструзии</h3>
                         </div>
-                        <div id="jssor_4" class="icrsl_320">
+                        <div id="jssor_3" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin loading">
                                 <img class="imgloading" src="spin.svg" />
@@ -1192,7 +1199,7 @@
                         <div class="type_headerdiv">
                             <h3>Изделия, производимые методом мех.обработки</h3>
                         </div>
-                        <div id="jssor_5" class="icrsl_320">
+                        <div id="jssor_4" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin ui-tabs-loading">
                                 <img class="imgloading" src="spin.svg" />
@@ -1388,7 +1395,7 @@
                         <div class="type_headerdiv">
                             <h3>Изделия, производимые методом линейной формовки</h3>
                         </div>
-                        <div id="jssor_6" class="icrsl_320">
+                        <div id="jssor_5" class="icrsl_320">
                             <!-- Loading Screen -->
                             <div data-u="loading" class="jssorl-009-spin loading">
                                 <img class="imgloading" src="spin.svg" />
@@ -1585,7 +1592,7 @@
                     </div>
                     <div id="Div2" class="downloadButton3">
                         <a href="Files/Portfolio.docx" target="_blank">
-                            <p id="P5" class="downloadButtonText">Загрузить портфолио</p>
+                            <p id="p5" class="downloadButtonText">Загрузить портфолио</p>
                         </a>
                     </div>
                 </div>

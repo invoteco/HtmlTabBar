@@ -86,7 +86,7 @@
     display: block;
     padding: 25px 25px 25px 25px;
     height: 900px;
-    /*overflow: auto;*/
+    overflow: auto;
 }
 
 .ScrolledDiv {

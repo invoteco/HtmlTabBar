@@ -39,15 +39,6 @@
                 }
             };
 
-            //Create sliders
-            //=========================28.10.19====================================
-            //var jssor_sliders = new Array();
-            //for (i = 0; i < slidersCount; i++) {
-            //    jssor_sliders [i] = new $JssorSlider$("jssor_" + i.toString, jssor_options);
-            //}
-
-            //end create sliders
-
             var jssor_0_slider = new $JssorSlider$("jssor_0", jssor_options);
             var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_options);
             var jssor_2_slider = new $JssorSlider$("jssor_2", jssor_options);
@@ -57,133 +48,22 @@
 
             /*#region responsive code begin*/
             var MAX_WIDTH = 980;
-
-           // var containerElements = new Array();
+            /*Замена кода функции ScaleSlider() произведена invoteco 29.10.19*/
             function ScaleSlider() {
-                var containerElement_0 = jssor_0_slider.$Elmt.parentNode;
-                var containerElement_1 = jssor_1_slider.$Elmt.parentNode;//
-                var containerElement_2 = jssor_2_slider.$Elmt.parentNode;//
-                var containerElement_3 = jssor_3_slider.$Elmt.parentNode;//
-                var containerElement_4 = jssor_4_slider.$Elmt.parentNode;//
-                var containerElement_5 = jssor_5_slider.$Elmt.parentNode;//
+                var containerElements = new Array();
+                var containerWidths = new Array();
+                var expectedWidths = new Array();
 
-                var containerWidth_0 = containerElement_0.clientWidth;
-                var containerWidth_1 = containerElement_1.clientWidth;
-                var containerWidth_2 = containerElement_2.clientWidth;
-                var containerWidth_3 = containerElement_3.clientWidth;
-                var containerWidth_4 = containerElement_4.clientWidth;
-                var containerWidth_5 = containerElement_5.clientWidth;
-
-                if (containerWidth_0) {
-                    var expectedWidth_0 = Math.min(MAX_WIDTH || containerWidth_0, containerWidth_0);
-                    jssor_0_slider.$ScaleWidth(expectedWidth_0);
-                }
-
-                if (containerWidth_1) {
-                    var expectedWidth_1 = Math.min(MAX_WIDTH || containerWidth_1, containerWidth_1);
-                    jssor_1_slider.$ScaleWidth(expectedWidth_1);
-                }
-
-                if (containerWidth_2) {
-                    var expectedWidth_2 = Math.min(MAX_WIDTH || containerWidth_2, containerWidth_2);
-                    jssor_2_slider.$ScaleWidth(expectedWidth_2);
-                }
-                if (containerWidth_3) {
-                    var expectedWidth_3 = Math.min(MAX_WIDTH || containerWidth_3, containerWidth_3);
-                    jssor_3_slider.$ScaleWidth(expectedWidth_3);
-                }
-
-                if (containerWidth_4) {
-                    var expectedWidth_4 = Math.min(MAX_WIDTH || containerWidth_4, containerWidth_4);
-                    jssor_4_slider.$ScaleWidth(expectedWidth_4);
-                }
-                if (containerWidth_5) {
-                    var expectedWidth_5 = Math.min(MAX_WIDTH || containerWidth_5, containerWidth_5);
-                    jssor_5_slider.$ScaleWidth(expectedWidth_5);
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
-                }
-            }
-            function ScaleSlider() {
-                //var containerElements = new Array();
-                //var containerWidths = new Array();
-                //var expectedWidths = new Array();
-
-                //for (i = 0; i < slidersCount; i++) {
-                //    containerElements[i] = jssor_sliders[i].$Elmt.parentNode;
-                //    containerWidths[i] = containerElements[i].clientWidth;
-                //    if (containerWidth[i]) {
-                //        expectedWidths[i] = Math.min(MAX_WIDTH || containerWidths[i], containerWidths[i]);
-                //        jssor_sliders[i].$ScaleWidth(expectedWidths[i]);
-                //    }
-                //    else {
-                //        window.setTimeout(ScaleSlider, 30);
-                //    }
-                //}
-
-                //var containerElement_0 = jssor_0_slider.$Elmt.parentNode;
-                //var containerElement_1 = jssor_1_slider.$Elmt.parentNode;//
-                //var containerElement_2 = jssor_2_slider.$Elmt.parentNode;//
-                //var containerElement_3 = jssor_3_slider.$Elmt.parentNode;//
-                //var containerElement_4 = jssor_4_slider.$Elmt.parentNode;//
-                //var containerElement_5 = jssor_5_slider.$Elmt.parentNode;//
-
-                
-                //for (i = 0; i < slidersCount; i++) {
-                //    containerWidths [i] = containerElements [i].clientWidth;
-                //}
-
-                //var containerWidth_0 = containerElement_0.clientWidth;
-                //var containerWidth_1 = containerElement_1.clientWidth;
-                //var containerWidth_2 = containerElement_2.clientWidth;
-                //var containerWidth_3 = containerElement_3.clientWidth;
-                //var containerWidth_4 = containerElement_4.clientWidth;
-                //var containerWidth_5 = containerElement_5.clientWidth;
-
-                
-                //for (i = 0; i < slidersCount; i++) {
-                //    if (containerWidth [i]) { 
-                //        expectedWidths [i] = Math.min(MAX_WIDTH || containerWidths [i], containerWidths [i]);
-                //        jssor_sliders [i].$ScaleWidth(expectedWidths [i]);
-                //    }
-                //    else
-                //    {
-                //        window.setTimeout(ScaleSlider, 30);
-                //    }
-                //}
-
-
-
-                if (containerWidth_0) {
-                    var expectedWidth_0 = Math.min(MAX_WIDTH || containerWidth_0, containerWidth_0);
-                    jssor_0_slider.$ScaleWidth(expectedWidth_0);
-                }
-
-                if (containerWidth_1) {
-                    var expectedWidth_1 = Math.min(MAX_WIDTH || containerWidth_1, containerWidth_1);
-                    jssor_1_slider.$ScaleWidth(expectedWidth_1);
-                }
-
-                if (containerWidth_2) {
-                    var expectedWidth_2 = Math.min(MAX_WIDTH || containerWidth_2, containerWidth_2);
-                    jssor_2_slider.$ScaleWidth(expectedWidth_2);
-                }
-                if (containerWidth_3) {
-                    var expectedWidth_3 = Math.min(MAX_WIDTH || containerWidth_3, containerWidth_3);
-                    jssor_3_slider.$ScaleWidth(expectedWidth_3);
-                }
-
-                if (containerWidth_4) {
-                    var expectedWidth_4 = Math.min(MAX_WIDTH || containerWidth_4, containerWidth_4);
-                    jssor_4_slider.$ScaleWidth(expectedWidth_4);
-                }
-                if (containerWidth_5) {
-                    var expectedWidth_5 = Math.min(MAX_WIDTH || containerWidth_5, containerWidth_5);
-                    jssor_5_slider.$ScaleWidth(expectedWidth_5);
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
+                for (i = 0; i < slidersCount; i++) {
+                    containerElements[i] = jssor_sliders[i].$Elmt.parentNode;
+                    containerWidths[i] = containerElements[i].clientWidth;
+                    if (containerWidth[i]) {
+                        expectedWidths[i] = Math.min(MAX_WIDTH || containerWidths[i], containerWidths[i]);
+                        jssor_sliders[i].$ScaleWidth(expectedWidths[i]);
+                    }
+                    else {
+                        window.setTimeout(ScaleSlider, 30);
+                    }
                 }
             }
 

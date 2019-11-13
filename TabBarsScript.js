@@ -1,71 +1,127 @@
 ﻿//Скрипт служит для функционирования TabBar с сохранением состояния в файле cookie
 var isFading = true; //Определяет, должен-ли контент появляться постепенно.
 var fadeTime = 300; //Определяет время появления контента (in ms) 
+var contentDivPrefix = "tabBar1_contDiv";
 
-function IsCookieEnabled() {
-    if (typeof (navigator.cookieEnabled) != "undefined") {
-        return navigator.cookieEnabled;
+//Добавление возможности сохранения состояния вкладок в LocalStorage
+//Состояние конкретного TabBar-а планируется хранить в виде: key="tb[tabbarnumber]"   item=[activetabindex]
+//Так как активной в данном TabBar-е может быть только одна вкладка, то достаточно хранить сосстояние, содержащее
+//только идентификатор TabBara в качестве ключа, и индекс активной вкладки в качестве значения.
+//Т.е. состояние TabBar-а с номером 1, в котором активна вкладка с индексом 3, будет выглядеть так: key="tb1"   item="3".
+//id div-а, соответствующего TabBar-у с номером 1, должен иметь вид: <div id="tb1">
+//id div-а, соответствующего tab-у с индексом 3, должен иметь вид: <div id="tb1_tab3">
+//========================================================================================================================
+
+function restoreStateFromLS(tabbarid) {
+    //Так как при первой загрузке должна активизироваться первая вкладка (с индеком 0), то
+    //проверяем localStorage на присутствие ранее сохраненных состояний с ключом "tb1"
+    var item = localStorage.getItem(tabbarid);
+
+    if (item == null) {  //Если хранилище пустое
+        localStorage.setItem(tabbarid, "0");      //то присваиваем признак активности вкладке с индексом 0 и сохраняем состояние
+        changeStateFromLS(tabbarid + "_" + "tab0");
+        //alert(item);
     } else {
-        var tmpCookie = "testCookieForCheck";
-        SetCookie(tmpCookie, "1");
-        if (GetCookie(tmpCookie) != null) {
-            DeleteCookie(tmpCookie);
-            return true;
-        }
-        return false;
+        //Если  в хранилище уже есть состояния с нужным ключом, то применяем его      
+        changeStateFromLS(tabbarid + "_" + "tab" + item);
+        
+    } 
+}
+
+function changeStateFromLS(tabid) {
+
+    var tabbarid = tabid.slice(0, 3); //"tb1_tab3"->"tb1"
+    var item = localStorage.getItem(tabbarid);//После первой загрузки: key="tb1"   item="0". После клика на tab 3: key="tb1"   item="3"
+
+    //localStorage.removeItem(tabbarid);//Удаляем все состояния из localStorage, чтобы там могло храниться только одно
+    //alert(item);
+    var activeTabNumber = getTabNumber(tabid);// "tb1_tab3"->"3"
+    localStorage.setItem(tabbarid, activeTabNumber);//Сохраняем состояние key="tb1"   item="3".
+    
+
+    var tabbarnumber = getTabBarNumber(tabbarid);//"tb1"->"1"
+
+    var tab = (document.all) ? document.all(tabid) : document.getElementById(tabid);//Находим вкладку по id
+    tab.className = "ATab" + tabbarnumber.toString();//Делаем активной
+
+    var content = (document.all) ? document.all(contentDivPrefix + item) : document.getElementById(contentDivPrefix + item);//Находим контент по id "tabBar1_contDiv0"
+    content.className = "AContent" + tabbarnumber;//Делаем активным
+
+    localStorage.removeItem(tabbarid);//Удаляем все состояния из localStorage, чтобы там могло храниться только одно
+
+
+    //var nid = stringIdTonumber(elemID);
+
+    //    for (var i = 0; i < tabscount; i++) {
+    //        if (i == nid) {
+    //            setTabStateInLS(tabbarnumber, numberIdToStringId(tabprefix, i), "1");
+    //        } else {
+    //            setTabStateInLS(tabbarnumber, numberIdToStringId(tabprefix, i), "0");
+    //        }
+    //    }
+    //    setContent(tabbarnumber, tabscount, tabprefix, divprefix);
     }
-}
 
-function getCookie(name) {
-    var cookie = " " + document.cookie;
-    var search = " " + name + "=";
-    var setStr = null;
-    var offset = 0;
-    var end = 0;
-    if (cookie.length > 0) {
-        offset = cookie.indexOf(search);
-        if (offset != -1) {
-            offset += search.length;
-            end = cookie.indexOf(";", offset)
-            if (end == -1) {
-                end = cookie.length;
-            }
-            setStr = unescape(cookie.substring(offset, end));
-        }
+
+
+    //Ищет tab, который нужно сделать активным, и присваивает ему стиль активной вкладки
+    function setActiveTab(tabbarnumber, item) {
+        var tabid = "tb" + tabbarnumber.toString() + "_" + "tab" + item.toString();//Вычисляем id вкладки
+        var tab = (document.all) ? document.all(tabid) : document.getElementById(tabid);//Находим вкладку по id
+            tab.className = "ATab" + tabbarnumber.toString();
     }
-    return (setStr);
-}
-
-function setCookie(name, value, expires, path, domain, secure) {
-    document.cookie = name + "=" + escape(value) +
-        ((expires) ? "; expires=" + expires : "") +
-        ((path) ? "; path=" + path : "") +
-        ((domain) ? "; domain=" + domain : "") +
-        ((secure) ? "; secure" : "");
-}
-
-function restoreState(tabbarnumber, tabscount, tabprefix, divprefix, cookiename) {
-    isCookieSupport = false;
-    isCookieSupport = IsCookieEnabled();
-    if (isCookieSupport == true) {
-        var c = getCookie(cookiename);
-        if ((c == "undefined") || (c == null)) {
-            c = tabprefix + "0";
-        } else {
-            c = getCookie(cookiename).toString();
-        }
-        setTabState(tabbarnumber, c, true)
-        setContent(tabbarnumber, tabscount, tabprefix, divprefix);
-
-    } else {
-        alert('Cookie не поддерживаются.');
+    //Ищет content, который нужно сделать активным, и присваивает ему стиль активного контента
+    function setActiveContent(tabbarnumber, item) {
+        var content = (document.all) ? document.all(divprefix + item.toString()) : document.getElementById(divprefix + item.toString());
+        if (isFading) { fade(divprefix + item.toString(), 100, 0, fadeTime); }
+        content.className = "AContent" + tabbarnumber.toString();
     }
+
+
+
+
+
+//Получение номеров TabBar-а и tab-а из ключа key, который сохраняется в localStorage
+function getTabBarNumber(key) {
+    return key[key.length - 1];//tb1 -> 1
 }
+//Получение индекса tab-а из его id
+function getTabNumber(tabid) {
+    return tabid[tabid.length - 1];////tb1_tab3 -> 3
+}
+
+//Получение Key из id tab-а
+function getKeyFromId(tabid) {
+    return tabid.slice(0, 7);
+}
+
+//Сохранение состояния вкладки, по которой кликнули, в localStorage
+//Так как при клике на tab-е должно устанавливаться и сохраняться активное состояние, 
+//то элементу с этим id присваиваем состояние "1". Т.е. вызовы д.б. saveState(tabid, "1")
+function saveState(tabid, state) {//tabid="tb1_tab3" 
+    var key = getKeyFromId(tabid);//key="tb1_tab3" 
+    localStorage.setItem(key, state);//"tb1_tab3", "1"
+}
+
+function getState(tabid) {
+    localStorage.getItem(tabid);
+}
+
+function getTabStateFromLS(tabbarnumber, tabprefix, i) {
+    var tab = (document.all) ? document.all(tabprefix + i.toString()) : document.getElementById(tabprefix + i.toString());
+    var state = "0";//Так как localStorage принимает параметры только в строковом виде, то обозначаем неактивное состояние вкладки как "0", а активное как "1" 
+    if (tab.className == 'ATab' + i.toString()) {
+        state = "1";
+    } else { state = "0" };
+    return state;
+}
+//==========================================================================================
+
 
 function stringIdTonumber(stringId) {
     stringId = stringId.slice(stringId.length - 4); //tabBar0_tab0 --> tab0
     var pos = stringId.length - 1;
-    return parseInt(stringId.charAt(pos), 10);
+    return parseInt(stringId.charAt(pos), 10);//10-основание счисления числовой строки. Всегда используем 10, т.к. применяем десятичную систему счисления
 }
 
 function numberIdToStringId(tabprefix, numberId) {

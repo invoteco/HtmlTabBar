@@ -5,14 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="Stylesheet" type="text/css" href="TabsStyles.css" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-    <link rel="stylesheet" href="Acc.css" />
-    <link rel="stylesheet" href="Icrsl.css" />
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript" src="jssor.slider.min.js"></script>
-
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />-->
+    <!--<link rel="stylesheet" href="Acc.css"/>-->
+    <!--<link rel="stylesheet" href="Icrsl.css" />-->
+    <script type="text/javascript" src="TabBarsScript.js"></script>
     <style>
         a.rollover_fb {
             background: url(btn_fb_39x39_grey_n.png); /* рисунок, который увидим сразу  */
@@ -52,10 +48,8 @@
 <!-- Нужно столько вызовов, сколькsо tabbar-ов на странице (для каждого свои параметры)-->
 <!--<body onload="restoreState('1', 7, 'tabBar1_tab', 'tabBar1_contDiv', 'MyCookieForTabBar1')">-->
  <body>
-    <script type="text/javascript" src="TabBarsScript.js"></script>
-
     <div id="maindiv" class="maindiv">
-        <div id="tb1" class="tabBar1" onload="restoreStateFromLS(this.id)">
+         <div id="tb1" class="tabBar1" onload="restoreStateFromLS(this.id)">      
             <div id="tabsDiv" class="tabsDiv1">
                 <!-- ================================================================================================ -->
                 <div id="tabBar1_leftIndent" class="LeftIndent1"></div>
@@ -63,32 +57,32 @@
                     <p id="text1_tab0">Профиль</p>
                 </div>
                 <!-- ================================================================================================ -->
-                <div id="tabBar1_d0_1" class="TabDelimiter"></div>
+                <div id="tabBar1_d1" class="TabDelimiter"></div>
                 <div id="tb1_tab1" class="ITab1" onclick="changeStateFromLS(this.id)">
                     <p id="text1_tab1">Резюме</p>
                 </div>
                 <!-- ================================================================================================ -->
-                <div id="tabBar1_d1_2" class="TabDelimiter"></div>
+                <div id="tabBar1_d2" class="TabDelimiter"></div>
                 <div id="tb1_tab2" class="ITab1" onclick="changeStateFromLS(this.id)">                   
                     <p id="text1_tab2">Портфолио</p>
                 </div>
                 <!-- ================================================================================================ -->
-                <div id="tabBar1_d2_3" class="TabDelimiter"></div>
+                <div id="tabBar1_d3" class="TabDelimiter"></div>
                 <div id="tb1_tab3" class="ITab1" onclick="changeStateFromLS(this.id)">
                     <p id="text1_tab3">Блог</p>
                 </div>
                 <!-- ================================================================================================ -->
-                <div id="tabBar1_d1_4" class="TabDelimiter"></div>
+                <div id="tabBar1_d4" class="TabDelimiter"></div>
                 <div id="tb1_tab4" class="ITab1" onclick="changeStateFromLS(this.id)">
                     <p id="text1_tab4">Статьи</p>
                 </div>
                 <!-- ================================================================================================ -->
-                <div id="tabBar1_d1_5" class="TabDelimiter"></div>
+                <div id="tabBar1_d5" class="TabDelimiter"></div>
                 <div id="tb1_tab5" class="ITab1" onclick="changeStateFromLS(this.id)">
                     <p id="text1_tab5">Форум</p>
                 </div>
                 <!-- ================================================================================================ -->
-                <div id="tabBar1_d1_6" class="TabDelimiter"></div>
+                <div id="tabBar1_d6" class="TabDelimiter"></div>
                 <div id="tb1_tab6" class="ITab1" onclick="changeStateFromLS(this.id)">
                     <p id="text1_tab6">Контакты</p>
                 </div>

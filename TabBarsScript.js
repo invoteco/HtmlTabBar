@@ -2,6 +2,7 @@
 var isFading = true; //Определяет, должен-ли контент появляться постепенно.
 var fadeTime = 300; //Определяет время появления контента (in ms) 
 var contentDivPrefix = "tabBar1_contDiv";
+var tabsCount = 7;
 
 //Добавление возможности сохранения состояния вкладок в LocalStorage
 //Состояние конкретного TabBar-а планируется хранить в виде: key="tb[tabbarnumber]"   item=[activetabindex]
@@ -12,26 +13,68 @@ var contentDivPrefix = "tabBar1_contDiv";
 //id div-а, соответствующего tab-у с индексом 3, должен иметь вид: <div id="tb1_tab3">
 //========================================================================================================================
 
+//Проверка доступности localStorage: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
+function storageAvailable(type) {
+    var storage;
+    try {
+        storage = window[type];
+        var x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch (e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            (storage && storage.length !== 0);
+    }
+}
+
+
+
 function restoreStateFromLS(tabbarid) {
     //Так как при первой загрузке должна активизироваться первая вкладка (с индеком 0), то
     //проверяем localStorage на присутствие ранее сохраненных состояний с ключом "tb1"
-    var item = localStorage.getItem(tabbarid);
+    //var item = localStorage.getItem(tabbarid);
 
-    if (item == null) {  //Если хранилище пустое
-        localStorage.setItem(tabbarid, "0");      //то присваиваем признак активности вкладке с индексом 0 и сохраняем состояние
-        changeStateFromLS(tabbarid + "_" + "tab0");
-        //alert(item);
+    if (item === null) {  //Если хранилище пустое
+        var startitem = "0";
+        localStorage.setItem(tabbarid, startitem);      //то присваиваем признак активности вкладке с индексом 0 и сохраняем состояние. key="tb1"   item="0"
+        //changeStateFromLS(tabbarid + "_" + "tab0");//"tb1_tab0"
     } else {
-        //Если  в хранилище уже есть состояния с нужным ключом, то применяем его      
-        changeStateFromLS(tabbarid + "_" + "tab" + item);
-        
-    } 
+        //Если  в хранилище уже есть состояния с нужным ключом, то применяем его 
+        localStorage.setItem(tabbarid, 7);
+        //changeStateFromLS(tabbarid + "_" + "tab" + item);
+    }
+    //localStorage.clear();
+    
+    //localStorage.setItem("test", 000);
+
+
+    //sessionStorage.setItem(tabbarid, 000);
+
+
+    if (storageAvailable('localStorage')) {
+        // Код, который выполняется, если localStorage доступно
+    }
+    else {
+        // Код, который выполняется, если localStorage недоступно
+    }
 }
 
 function changeStateFromLS(tabid) {
 
     var tabbarid = tabid.slice(0, 3); //"tb1_tab3"->"tb1"
-    var item = localStorage.getItem(tabbarid);//После первой загрузки: key="tb1"   item="0". После клика на tab 3: key="tb1"   item="3"
+    var item = localStorage.getItem(tabbarid);//После первой загрузки: key="tb1"  item="0". После клика на tab 3: key="tb1"  item="3"
 
     //localStorage.removeItem(tabbarid);//Удаляем все состояния из localStorage, чтобы там могло храниться только одно
     //alert(item);

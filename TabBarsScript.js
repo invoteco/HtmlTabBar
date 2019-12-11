@@ -44,6 +44,10 @@ function setCookie(name, value, expires, path, domain, secure) {
         ((secure) ? "; secure" : "");
 }
 
+window.onload = function () {
+    restoreState('1', 7, 'tabBar1_tab', 'tabBar1_contDiv', 'MyCookieForTabBar1');
+};
+
 function restoreState(tabbarnumber, tabscount, tabprefix, divprefix, cookiename) {
     isCookieSupport = false;
     isCookieSupport = IsCookieEnabled();

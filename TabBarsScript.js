@@ -94,8 +94,16 @@ function setTabState(tabbarnumber, sid, state) {
         tab.className = "ITab" + tabbarnumber.toString();
     }
 }
-
-// getTabState(1, 'tabBar1_tab', 0)
+//Обработчики щелчка по tab-у
+function clickf(tabid) {
+    let tabbarnumber = tabid[6]; //tabBar1_tab0 --> 1
+    let tabscount = 7;
+    let tabprefix = tabid.slice(0, 11); //tabBar1_tab0  --> tabBar1_tab
+    let contentdivprefix = "tabBar" + tabbarnumber + "_contDiv";
+    let mycookiename = "MyCookieForTabBar" + tabbarnumber;
+    changeState(tabbarnumber, tabscount, tabid, tabprefix, contentdivprefix);
+    setCookie(mycookiename, tabid);
+}
 
 function changeState(tabbarnumber, tabscount, elemID, tabprefix, divprefix) {
     var nid = stringIdTonumber(elemID);
